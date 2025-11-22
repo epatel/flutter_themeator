@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__dart__analyze_files"
+      "mcp__dart__analyze_files",
+      "mcp__dart__pub_dev_search",
+      "mcp__dart__pub"
     ],
     "deny": [],
     "ask": []

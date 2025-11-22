@@ -9,64 +9,113 @@ class ColorsTab extends StatelessWidget {
 
     final colorGroups = [
       _ColorGroup('Primary', [
-        _ColorItem('primary', colorScheme.primary),
-        _ColorItem('onPrimary', colorScheme.onPrimary),
-        _ColorItem('primaryContainer', colorScheme.primaryContainer),
-        _ColorItem('onPrimaryContainer', colorScheme.onPrimaryContainer),
-        _ColorItem('primaryFixed', colorScheme.primaryFixed),
-        _ColorItem('primaryFixedDim', colorScheme.primaryFixedDim),
-        _ColorItem('onPrimaryFixed', colorScheme.onPrimaryFixed),
-        _ColorItem('onPrimaryFixedVariant', colorScheme.onPrimaryFixedVariant),
+        _ColorItem('primary', colorScheme.primary, colorScheme.onPrimary),
+        _ColorItem(
+          'primaryContainer',
+          colorScheme.primaryContainer,
+          colorScheme.onPrimaryContainer,
+        ),
+        _ColorItem(
+          'primaryFixed',
+          colorScheme.primaryFixed,
+          colorScheme.onPrimaryFixed,
+        ),
+        _ColorItem(
+          'primaryFixedDim',
+          colorScheme.primaryFixedDim,
+          colorScheme.onPrimaryFixedVariant,
+        ),
       ]),
       _ColorGroup('Secondary', [
-        _ColorItem('secondary', colorScheme.secondary),
-        _ColorItem('onSecondary', colorScheme.onSecondary),
-        _ColorItem('secondaryContainer', colorScheme.secondaryContainer),
-        _ColorItem('onSecondaryContainer', colorScheme.onSecondaryContainer),
-        _ColorItem('secondaryFixed', colorScheme.secondaryFixed),
-        _ColorItem('secondaryFixedDim', colorScheme.secondaryFixedDim),
-        _ColorItem('onSecondaryFixed', colorScheme.onSecondaryFixed),
-        _ColorItem('onSecondaryFixedVariant', colorScheme.onSecondaryFixedVariant),
+        _ColorItem('secondary', colorScheme.secondary, colorScheme.onSecondary),
+        _ColorItem(
+          'secondaryContainer',
+          colorScheme.secondaryContainer,
+          colorScheme.onSecondaryContainer,
+        ),
+        _ColorItem(
+          'secondaryFixed',
+          colorScheme.secondaryFixed,
+          colorScheme.onSecondaryFixed,
+        ),
+        _ColorItem(
+          'secondaryFixedDim',
+          colorScheme.secondaryFixedDim,
+          colorScheme.onSecondaryFixedVariant,
+        ),
       ]),
       _ColorGroup('Tertiary', [
-        _ColorItem('tertiary', colorScheme.tertiary),
-        _ColorItem('onTertiary', colorScheme.onTertiary),
-        _ColorItem('tertiaryContainer', colorScheme.tertiaryContainer),
-        _ColorItem('onTertiaryContainer', colorScheme.onTertiaryContainer),
-        _ColorItem('tertiaryFixed', colorScheme.tertiaryFixed),
-        _ColorItem('tertiaryFixedDim', colorScheme.tertiaryFixedDim),
-        _ColorItem('onTertiaryFixed', colorScheme.onTertiaryFixed),
-        _ColorItem('onTertiaryFixedVariant', colorScheme.onTertiaryFixedVariant),
+        _ColorItem('tertiary', colorScheme.tertiary, colorScheme.onTertiary),
+        _ColorItem(
+          'tertiaryContainer',
+          colorScheme.tertiaryContainer,
+          colorScheme.onTertiaryContainer,
+        ),
+        _ColorItem(
+          'tertiaryFixed',
+          colorScheme.tertiaryFixed,
+          colorScheme.onTertiaryFixed,
+        ),
+        _ColorItem(
+          'tertiaryFixedDim',
+          colorScheme.tertiaryFixedDim,
+          colorScheme.onTertiaryFixedVariant,
+        ),
       ]),
       _ColorGroup('Error', [
-        _ColorItem('error', colorScheme.error),
-        _ColorItem('onError', colorScheme.onError),
-        _ColorItem('errorContainer', colorScheme.errorContainer),
-        _ColorItem('onErrorContainer', colorScheme.onErrorContainer),
+        _ColorItem('error', colorScheme.error, colorScheme.onError),
+        _ColorItem(
+          'errorContainer',
+          colorScheme.errorContainer,
+          colorScheme.onErrorContainer,
+        ),
       ]),
       _ColorGroup('Surface', [
-        _ColorItem('surface', colorScheme.surface),
-        _ColorItem('onSurface', colorScheme.onSurface),
-        _ColorItem('surfaceDim', colorScheme.surfaceDim),
-        _ColorItem('surfaceBright', colorScheme.surfaceBright),
-        _ColorItem('surfaceContainerLowest', colorScheme.surfaceContainerLowest),
-        _ColorItem('surfaceContainerLow', colorScheme.surfaceContainerLow),
-        _ColorItem('surfaceContainer', colorScheme.surfaceContainer),
-        _ColorItem('surfaceContainerHigh', colorScheme.surfaceContainerHigh),
-        _ColorItem('surfaceContainerHighest', colorScheme.surfaceContainerHighest),
-        _ColorItem('onSurfaceVariant', colorScheme.onSurfaceVariant),
+        _ColorItem('surface', colorScheme.surface, colorScheme.onSurface),
+        _ColorItem('surfaceDim', colorScheme.surfaceDim, colorScheme.onSurface),
+        _ColorItem(
+          'surfaceBright',
+          colorScheme.surfaceBright,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'surfaceContainerLowest',
+          colorScheme.surfaceContainerLowest,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'surfaceContainerLow',
+          colorScheme.surfaceContainerLow,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'surfaceContainer',
+          colorScheme.surfaceContainer,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'surfaceContainerHigh',
+          colorScheme.surfaceContainerHigh,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'surfaceContainerHighest',
+          colorScheme.surfaceContainerHighest,
+          colorScheme.onSurface,
+        ),
+        _ColorItem(
+          'inverseSurface',
+          colorScheme.inverseSurface,
+          colorScheme.onInverseSurface,
+        ),
       ]),
-      _ColorGroup('Outline', [
-        _ColorItem('outline', colorScheme.outline),
-        _ColorItem('outlineVariant', colorScheme.outlineVariant),
-      ]),
-      _ColorGroup('Other', [
-        _ColorItem('shadow', colorScheme.shadow),
-        _ColorItem('scrim', colorScheme.scrim),
-        _ColorItem('inverseSurface', colorScheme.inverseSurface),
-        _ColorItem('onInverseSurface', colorScheme.onInverseSurface),
-        _ColorItem('inversePrimary', colorScheme.inversePrimary),
-        _ColorItem('surfaceTint', colorScheme.surfaceTint),
+      _ColorGroup('Outline & Other', [
+        _ColorItem('outline', colorScheme.outline, null),
+        _ColorItem('outlineVariant', colorScheme.outlineVariant, null),
+        _ColorItem('shadow', colorScheme.shadow, null),
+        _ColorItem('scrim', colorScheme.scrim, null),
+        _ColorItem('inversePrimary', colorScheme.inversePrimary, null),
+        _ColorItem('surfaceTint', colorScheme.surfaceTint, null),
       ]),
     ];
 
@@ -90,7 +139,7 @@ class ColorsTab extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 2.5,
+                childAspectRatio: 2.0,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
               ),
@@ -118,8 +167,9 @@ class _ColorGroup {
 class _ColorItem {
   final String name;
   final Color color;
+  final Color? onColor;
 
-  _ColorItem(this.name, this.color);
+  _ColorItem(this.name, this.color, this.onColor);
 }
 
 class _ColorCard extends StatelessWidget {
@@ -130,7 +180,7 @@ class _ColorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final luminance = colorItem.color.computeLuminance();
-    final textColor = luminance > 0.5 ? Colors.black : Colors.white;
+    final fallbackTextColor = luminance > 0.5 ? Colors.black : Colors.white;
 
     return Container(
       decoration: BoxDecoration(
@@ -146,7 +196,7 @@ class _ColorCard extends StatelessWidget {
           Text(
             colorItem.name,
             style: TextStyle(
-              color: textColor,
+              color: fallbackTextColor,
               fontWeight: .bold,
               fontSize: 12,
             ),
@@ -154,10 +204,28 @@ class _ColorCard extends StatelessWidget {
           Text(
             '#${colorItem.color.toHex()}',
             style: TextStyle(
-              color: textColor.withValues(alpha: 0.7),
+              color: fallbackTextColor.withValues(alpha: 0.7),
               fontSize: 10,
             ),
           ),
+          if (colorItem.onColor != null) ...[
+            const SizedBox(height: 4),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: colorItem.color,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                '• on${colorItem.name[0].toUpperCase()}${colorItem.name.substring(1)} #${colorItem.onColor!.toHex()}',
+                style: TextStyle(
+                  color: colorItem.onColor,
+                  fontWeight: .w500,
+                  fontSize: 11,
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -167,8 +235,8 @@ class _ColorCard extends StatelessWidget {
 extension on Color {
   String toHex() {
     return '${(r * 255).round().toRadixString(16).padLeft(2, '0')}'
-        '${(g * 255).round().toRadixString(16).padLeft(2, '0')}'
-        '${(b * 255).round().toRadixString(16).padLeft(2, '0')}'
+            '${(g * 255).round().toRadixString(16).padLeft(2, '0')}'
+            '${(b * 255).round().toRadixString(16).padLeft(2, '0')}'
         .toUpperCase();
   }
 }
