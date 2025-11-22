@@ -1,0 +1,1 @@
+Do not change Dart 3 dot shorthand syntax (e.g., `.fromSeed()`, `.center`) to explicit type references.
