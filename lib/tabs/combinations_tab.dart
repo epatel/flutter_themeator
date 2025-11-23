@@ -9,22 +9,70 @@ class CombinationsTab extends StatelessWidget {
 
     final combinations = [
       _Combination('Primary', colorScheme.primary, colorScheme.onPrimary),
-      _Combination('Primary Container', colorScheme.primaryContainer, colorScheme.onPrimaryContainer),
+      _Combination(
+        'Primary Container',
+        colorScheme.primaryContainer,
+        colorScheme.onPrimaryContainer,
+      ),
       _Combination('Secondary', colorScheme.secondary, colorScheme.onSecondary),
-      _Combination('Secondary Container', colorScheme.secondaryContainer, colorScheme.onSecondaryContainer),
+      _Combination(
+        'Secondary Container',
+        colorScheme.secondaryContainer,
+        colorScheme.onSecondaryContainer,
+      ),
       _Combination('Tertiary', colorScheme.tertiary, colorScheme.onTertiary),
-      _Combination('Tertiary Container', colorScheme.tertiaryContainer, colorScheme.onTertiaryContainer),
+      _Combination(
+        'Tertiary Container',
+        colorScheme.tertiaryContainer,
+        colorScheme.onTertiaryContainer,
+      ),
       _Combination('Error', colorScheme.error, colorScheme.onError),
-      _Combination('Error Container', colorScheme.errorContainer, colorScheme.onErrorContainer),
+      _Combination(
+        'Error Container',
+        colorScheme.errorContainer,
+        colorScheme.onErrorContainer,
+      ),
       _Combination('Surface', colorScheme.surface, colorScheme.onSurface),
-      _Combination('Surface Dim', colorScheme.surfaceDim, colorScheme.onSurface),
-      _Combination('Surface Bright', colorScheme.surfaceBright, colorScheme.onSurface),
-      _Combination('Surface Container Lowest', colorScheme.surfaceContainerLowest, colorScheme.onSurface),
-      _Combination('Surface Container Low', colorScheme.surfaceContainerLow, colorScheme.onSurface),
-      _Combination('Surface Container', colorScheme.surfaceContainer, colorScheme.onSurface),
-      _Combination('Surface Container High', colorScheme.surfaceContainerHigh, colorScheme.onSurface),
-      _Combination('Surface Container Highest', colorScheme.surfaceContainerHighest, colorScheme.onSurface),
-      _Combination('Inverse Surface', colorScheme.inverseSurface, colorScheme.onInverseSurface),
+      _Combination(
+        'Surface Dim',
+        colorScheme.surfaceDim,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Bright',
+        colorScheme.surfaceBright,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Container Lowest',
+        colorScheme.surfaceContainerLowest,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Container Low',
+        colorScheme.surfaceContainerLow,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Container',
+        colorScheme.surfaceContainer,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Container High',
+        colorScheme.surfaceContainerHigh,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Surface Container Highest',
+        colorScheme.surfaceContainerHighest,
+        colorScheme.onSurface,
+      ),
+      _Combination(
+        'Inverse Surface',
+        colorScheme.inverseSurface,
+        colorScheme.onInverseSurface,
+      ),
     ];
 
     return ListView.builder(
@@ -76,12 +124,16 @@ class _CombinationCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Headline',
-            style: textTheme.headlineSmall?.copyWith(color: combination.foreground),
+            style: textTheme.headlineSmall?.copyWith(
+              color: combination.foreground,
+            ),
           ),
           const SizedBox(height: 4),
           Text(
             'Body text demonstrating readability on this background color. The quick brown fox jumps over the lazy dog.',
-            style: textTheme.bodyMedium?.copyWith(color: combination.foreground),
+            style: textTheme.bodyMedium?.copyWith(
+              color: combination.foreground,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
