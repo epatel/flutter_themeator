@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/color_storage.dart';
+import '../themes.dart';
 
 class ColorSchemeProvider extends ChangeNotifier {
   final ColorStorage _storage;
@@ -12,23 +13,14 @@ class ColorSchemeProvider extends ChangeNotifier {
   }
 
   void _loadColors() {
-    final defaultLight = ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: .light,
-    );
-    final defaultDark = ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: .dark,
-    );
-
     final savedLight = _storage.loadColors(.light);
     final savedDark = _storage.loadColors(.dark);
 
     _lightColors = savedLight.isEmpty
-        ? ColorStorage.colorSchemeToMap(defaultLight)
+        ? ColorStorage.colorSchemeToMap(AppColors.lightColorScheme)
         : savedLight;
     _darkColors = savedDark.isEmpty
-        ? ColorStorage.colorSchemeToMap(defaultDark)
+        ? ColorStorage.colorSchemeToMap(AppColors.darkColorScheme)
         : savedDark;
   }
 
@@ -55,17 +47,8 @@ class ColorSchemeProvider extends ChangeNotifier {
   }
 
   Future<void> resetToDefault() async {
-    final defaultLight = ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: .light,
-    );
-    final defaultDark = ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: .dark,
-    );
-
-    _lightColors = ColorStorage.colorSchemeToMap(defaultLight);
-    _darkColors = ColorStorage.colorSchemeToMap(defaultDark);
+    _lightColors = ColorStorage.colorSchemeToMap(AppColors.lightColorScheme);
+    _darkColors = ColorStorage.colorSchemeToMap(AppColors.darkColorScheme);
 
     await _storage.clearColors();
     notifyListeners();
