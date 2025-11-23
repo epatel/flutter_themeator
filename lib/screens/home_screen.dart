@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../theme_provider.dart';
 import '../providers/color_scheme_provider.dart';
+import '../services/theme_exporter.dart';
 import '../tabs/colors_tab.dart';
 import '../tabs/text_themes_tab.dart';
 import '../tabs/combinations_tab.dart';
@@ -16,6 +18,21 @@ class HomeScreen extends StatelessWidget {
     required this.colorSchemeProvider,
   });
 
+  Future<void> _exportTheme(BuildContext context) async {
+    final dartCode = ThemeExporter.generateDartFile(
+      colorSchemeProvider.lightColorScheme,
+      colorSchemeProvider.darkColorScheme,
+    );
+
+    // Copy to clipboard (works on all platforms including web)
+    await Clipboard.setData(ClipboardData(text: dartCode));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Theme copied to clipboard')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -29,6 +46,11 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.refresh),
               onPressed: colorSchemeProvider.resetToDefault,
               tooltip: 'Reset colors to default',
+            ),
+            IconButton(
+              icon: const Icon(Icons.download),
+              onPressed: () => _exportTheme(context),
+              tooltip: 'Export theme as Dart file',
             ),
             IconButton(
               icon: Icon(

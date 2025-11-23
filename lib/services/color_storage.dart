@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../themes.dart';
 
 class ColorStorage {
   static const _keyLight = 'color_scheme_light';
@@ -94,10 +95,9 @@ class ColorStorage {
     Map<String, Color> colors,
     Brightness brightness,
   ) {
-    final defaultScheme = ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: brightness,
-    );
+    final defaultScheme = brightness == .light
+        ? AppColors.lightColorScheme
+        : AppColors.darkColorScheme;
 
     return ColorScheme(
       brightness: brightness,
