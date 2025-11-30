@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_themeator/app.dart';
 import 'package:flutter_themeator/services/color_storage.dart';
 import 'package:flutter_themeator/providers/color_scheme_provider.dart';
+import 'package:flutter_themeator/theme_provider.dart';
 import 'package:flutter_themeator/widgets/surface.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<ColorSchemeProvider> createTestProvider() async {
@@ -13,14 +15,22 @@ Future<ColorSchemeProvider> createTestProvider() async {
   return ColorSchemeProvider(colorStorage);
 }
 
+Widget createTestApp(ColorSchemeProvider colorSchemeProvider) {
+  return MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ChangeNotifierProvider.value(value: colorSchemeProvider),
+    ],
+    child: const ThemeatorApp(),
+  );
+}
+
 void main() {
   group('ThemeatorApp', () {
     testWidgets('renders with all tabs', (WidgetTester tester) async {
       final colorSchemeProvider = await createTestProvider();
 
-      await tester.pumpWidget(
-        ThemeatorApp(colorSchemeProvider: colorSchemeProvider),
-      );
+      await tester.pumpWidget(createTestApp(colorSchemeProvider));
 
       expect(find.text('Flutter Themeator'), findsOneWidget);
       expect(find.text('Colors'), findsOneWidget);
@@ -32,9 +42,7 @@ void main() {
     testWidgets('can switch between tabs', (WidgetTester tester) async {
       final colorSchemeProvider = await createTestProvider();
 
-      await tester.pumpWidget(
-        ThemeatorApp(colorSchemeProvider: colorSchemeProvider),
-      );
+      await tester.pumpWidget(createTestApp(colorSchemeProvider));
 
       // Initially on Colors tab
       expect(find.text('Long press a color to edit'), findsOneWidget);
@@ -61,9 +69,7 @@ void main() {
     testWidgets('theme toggle button exists', (WidgetTester tester) async {
       final colorSchemeProvider = await createTestProvider();
 
-      await tester.pumpWidget(
-        ThemeatorApp(colorSchemeProvider: colorSchemeProvider),
-      );
+      await tester.pumpWidget(createTestApp(colorSchemeProvider));
 
       expect(find.byIcon(Icons.dark_mode), findsOneWidget);
     });
@@ -71,9 +77,7 @@ void main() {
     testWidgets('reset button exists', (WidgetTester tester) async {
       final colorSchemeProvider = await createTestProvider();
 
-      await tester.pumpWidget(
-        ThemeatorApp(colorSchemeProvider: colorSchemeProvider),
-      );
+      await tester.pumpWidget(createTestApp(colorSchemeProvider));
 
       expect(find.byIcon(Icons.refresh), findsOneWidget);
     });

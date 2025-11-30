@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import '../providers/color_scheme_provider.dart';
 import '../services/theme_exporter.dart';
@@ -9,16 +10,12 @@ import '../tabs/combinations_tab.dart';
 import '../tabs/widgets_tab.dart';
 
 class HomeScreen extends StatelessWidget {
-  final ThemeProvider themeProvider;
-  final ColorSchemeProvider colorSchemeProvider;
+  const HomeScreen({super.key});
 
-  const HomeScreen({
-    super.key,
-    required this.themeProvider,
-    required this.colorSchemeProvider,
-  });
-
-  Future<void> _exportTheme(BuildContext context) async {
+  Future<void> _exportTheme(
+    BuildContext context,
+    ColorSchemeProvider colorSchemeProvider,
+  ) async {
     final dartCode = ThemeExporter.generateDartFile(
       colorSchemeProvider.lightColorScheme,
       colorSchemeProvider.darkColorScheme,
@@ -35,6 +32,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+    final colorSchemeProvider = context.read<ColorSchemeProvider>();
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.download),
-              onPressed: () => _exportTheme(context),
+              onPressed: () => _exportTheme(context, colorSchemeProvider),
               tooltip: 'Export theme as Dart file',
             ),
             IconButton(
@@ -71,12 +71,12 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-            ColorsTab(colorSchemeProvider: colorSchemeProvider),
-            const TextThemesTab(),
-            const CombinationsTab(),
-            const WidgetsTab(),
+            ColorsTab(),
+            TextThemesTab(),
+            CombinationsTab(),
+            WidgetsTab(),
           ],
         ),
       ),

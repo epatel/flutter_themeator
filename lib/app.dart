@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'theme_provider.dart';
 import 'providers/color_scheme_provider.dart';
 import 'screens/home_screen.dart';
@@ -21,44 +22,27 @@ const _interTextTheme = TextTheme(
   labelSmall: TextStyle(fontFamily: 'Inter'),
 );
 
-class ThemeatorApp extends StatefulWidget {
-  final ColorSchemeProvider colorSchemeProvider;
-
-  const ThemeatorApp({super.key, required this.colorSchemeProvider});
-
-  @override
-  State<ThemeatorApp> createState() => _ThemeatorAppState();
-}
-
-class _ThemeatorAppState extends State<ThemeatorApp> {
-  final _themeProvider = ThemeProvider();
+class ThemeatorApp extends StatelessWidget {
+  const ThemeatorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: Listenable.merge([
-        _themeProvider,
-        widget.colorSchemeProvider,
-      ]),
-      builder: (context, child) {
-        return MaterialApp(
-          title: 'Flutter Themeator',
-          theme: ThemeData(
-            colorScheme: widget.colorSchemeProvider.lightColorScheme,
-            textTheme: _interTextTheme,
-          ),
-          darkTheme: ThemeData(
-            colorScheme: widget.colorSchemeProvider.darkColorScheme,
-            textTheme: _interTextTheme,
-          ),
-          themeMode: _themeProvider.themeMode,
-          home: HomeScreen(
-            themeProvider: _themeProvider,
-            colorSchemeProvider: widget.colorSchemeProvider,
-          ),
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    final themeProvider = context.watch<ThemeProvider>();
+    final colorSchemeProvider = context.watch<ColorSchemeProvider>();
+
+    return MaterialApp(
+      title: 'Flutter Themeator',
+      theme: ThemeData(
+        colorScheme: colorSchemeProvider.lightColorScheme,
+        textTheme: _interTextTheme,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: colorSchemeProvider.darkColorScheme,
+        textTheme: _interTextTheme,
+      ),
+      themeMode: themeProvider.themeMode,
+      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -8,7 +8,8 @@
       "Bash(flutter test:*)",
       "WebFetch(domain:fonts.google.com)",
       "Bash(curl:*)",
-      "Bash(unzip:*)"
+      "Bash(unzip:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

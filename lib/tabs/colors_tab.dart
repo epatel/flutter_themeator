@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../providers/color_scheme_provider.dart';
 import '../dialogs/color_editor_dialog.dart';
 
 class ColorsTab extends StatelessWidget {
-  final ColorSchemeProvider colorSchemeProvider;
-
-  const ColorsTab({super.key, required this.colorSchemeProvider});
+  const ColorsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -230,7 +229,6 @@ class ColorsTab extends StatelessWidget {
       onColorName: colorItem.onColorName,
       initialOnColor: colorItem.onColor,
       brightness: brightness,
-      provider: colorSchemeProvider,
     );
   }
 }

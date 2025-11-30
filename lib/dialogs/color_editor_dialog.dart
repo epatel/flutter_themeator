@@ -1,5 +1,6 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../providers/color_scheme_provider.dart';
 
 class ColorEditorDialog extends StatefulWidget {
@@ -8,7 +9,6 @@ class ColorEditorDialog extends StatefulWidget {
   final String? onColorName;
   final Color? initialOnColor;
   final Brightness brightness;
-  final ColorSchemeProvider provider;
 
   const ColorEditorDialog({
     super.key,
@@ -17,7 +17,6 @@ class ColorEditorDialog extends StatefulWidget {
     this.onColorName,
     this.initialOnColor,
     required this.brightness,
-    required this.provider,
   });
 
   static Future<void> show({
@@ -27,7 +26,6 @@ class ColorEditorDialog extends StatefulWidget {
     String? onColorName,
     Color? initialOnColor,
     required Brightness brightness,
-    required ColorSchemeProvider provider,
   }) {
     return showDialog(
       context: context,
@@ -37,7 +35,6 @@ class ColorEditorDialog extends StatefulWidget {
         onColorName: onColorName,
         initialOnColor: initialOnColor,
         brightness: brightness,
-        provider: provider,
       ),
     );
   }
@@ -201,14 +198,16 @@ class _ColorEditorDialogState extends State<ColorEditorDialog> {
   }
 
   Future<void> _save() async {
-    await widget.provider.updateColor(
+    final provider = context.read<ColorSchemeProvider>();
+
+    await provider.updateColor(
       widget.colorName,
       _color,
       widget.brightness,
     );
 
     if (widget.onColorName != null && _onColor != null) {
-      await widget.provider.updateColor(
+      await provider.updateColor(
         widget.onColorName!,
         _onColor!,
         widget.brightness,

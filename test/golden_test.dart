@@ -9,6 +9,7 @@ import 'package:flutter_themeator/tabs/colors_tab.dart';
 import 'package:flutter_themeator/tabs/text_themes_tab.dart';
 import 'package:flutter_themeator/tabs/combinations_tab.dart';
 import 'package:flutter_themeator/tabs/widgets_tab.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<ColorSchemeProvider> createTestProvider() async {
@@ -54,13 +55,16 @@ void main() {
       final provider = await createTestProvider();
 
       await tester.pumpWidget(
-        MaterialApp(
-          theme: ThemeData(
-            colorScheme: provider.lightColorScheme,
-            textTheme: _interTextTheme,
-          ),
-          home: Scaffold(
-            body: ColorsTab(colorSchemeProvider: provider),
+        ChangeNotifierProvider.value(
+          value: provider,
+          child: MaterialApp(
+            theme: ThemeData(
+              colorScheme: provider.lightColorScheme,
+              textTheme: _interTextTheme,
+            ),
+            home: const Scaffold(
+              body: ColorsTab(),
+            ),
           ),
         ),
       );
@@ -138,13 +142,16 @@ void main() {
       final provider = await createTestProvider();
 
       await tester.pumpWidget(
-        MaterialApp(
-          theme: ThemeData(
-            colorScheme: provider.darkColorScheme,
-            textTheme: _interTextTheme,
-          ),
-          home: Scaffold(
-            body: ColorsTab(colorSchemeProvider: provider),
+        ChangeNotifierProvider.value(
+          value: provider,
+          child: MaterialApp(
+            theme: ThemeData(
+              colorScheme: provider.darkColorScheme,
+              textTheme: _interTextTheme,
+            ),
+            home: const Scaffold(
+              body: ColorsTab(),
+            ),
           ),
         ),
       );
