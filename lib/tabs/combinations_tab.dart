@@ -8,30 +8,7 @@ class CombinationsTab extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     final combinations = [
-      _Combination('Primary', colorScheme.primary, colorScheme.onPrimary),
-      _Combination(
-        'Primary Container',
-        colorScheme.primaryContainer,
-        colorScheme.onPrimaryContainer,
-      ),
-      _Combination('Secondary', colorScheme.secondary, colorScheme.onSecondary),
-      _Combination(
-        'Secondary Container',
-        colorScheme.secondaryContainer,
-        colorScheme.onSecondaryContainer,
-      ),
-      _Combination('Tertiary', colorScheme.tertiary, colorScheme.onTertiary),
-      _Combination(
-        'Tertiary Container',
-        colorScheme.tertiaryContainer,
-        colorScheme.onTertiaryContainer,
-      ),
-      _Combination('Error', colorScheme.error, colorScheme.onError),
-      _Combination(
-        'Error Container',
-        colorScheme.errorContainer,
-        colorScheme.onErrorContainer,
-      ),
+      // Surface
       _Combination('Surface', colorScheme.surface, colorScheme.onSurface),
       _Combination(
         'Surface Dim',
@@ -72,6 +49,64 @@ class CombinationsTab extends StatelessWidget {
         'Inverse Surface',
         colorScheme.inverseSurface,
         colorScheme.onInverseSurface,
+      ),
+      // Primary
+      _Combination('Primary', colorScheme.primary, colorScheme.onPrimary),
+      _Combination(
+        'Primary Container',
+        colorScheme.primaryContainer,
+        colorScheme.onPrimaryContainer,
+      ),
+      _Combination(
+        'Primary Fixed',
+        colorScheme.primaryFixed,
+        colorScheme.onPrimaryFixed,
+      ),
+      _Combination(
+        'Primary Fixed Dim',
+        colorScheme.primaryFixedDim,
+        colorScheme.onPrimaryFixedVariant,
+      ),
+      // Secondary
+      _Combination('Secondary', colorScheme.secondary, colorScheme.onSecondary),
+      _Combination(
+        'Secondary Container',
+        colorScheme.secondaryContainer,
+        colorScheme.onSecondaryContainer,
+      ),
+      _Combination(
+        'Secondary Fixed',
+        colorScheme.secondaryFixed,
+        colorScheme.onSecondaryFixed,
+      ),
+      _Combination(
+        'Secondary Fixed Dim',
+        colorScheme.secondaryFixedDim,
+        colorScheme.onSecondaryFixedVariant,
+      ),
+      // Tertiary
+      _Combination('Tertiary', colorScheme.tertiary, colorScheme.onTertiary),
+      _Combination(
+        'Tertiary Container',
+        colorScheme.tertiaryContainer,
+        colorScheme.onTertiaryContainer,
+      ),
+      _Combination(
+        'Tertiary Fixed',
+        colorScheme.tertiaryFixed,
+        colorScheme.onTertiaryFixed,
+      ),
+      _Combination(
+        'Tertiary Fixed Dim',
+        colorScheme.tertiaryFixedDim,
+        colorScheme.onTertiaryFixedVariant,
+      ),
+      // Error
+      _Combination('Error', colorScheme.error, colorScheme.onError),
+      _Combination(
+        'Error Container',
+        colorScheme.errorContainer,
+        colorScheme.onErrorContainer,
       ),
     ];
 

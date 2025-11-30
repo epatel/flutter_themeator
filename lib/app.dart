@@ -4,23 +4,7 @@ import 'theme_provider.dart';
 import 'providers/color_scheme_provider.dart';
 import 'screens/home_screen.dart';
 
-const _interTextTheme = TextTheme(
-  displayLarge: TextStyle(fontFamily: 'Inter'),
-  displayMedium: TextStyle(fontFamily: 'Inter'),
-  displaySmall: TextStyle(fontFamily: 'Inter'),
-  headlineLarge: TextStyle(fontFamily: 'Inter'),
-  headlineMedium: TextStyle(fontFamily: 'Inter'),
-  headlineSmall: TextStyle(fontFamily: 'Inter'),
-  titleLarge: TextStyle(fontFamily: 'Inter'),
-  titleMedium: TextStyle(fontFamily: 'Inter'),
-  titleSmall: TextStyle(fontFamily: 'Inter'),
-  bodyLarge: TextStyle(fontFamily: 'Inter'),
-  bodyMedium: TextStyle(fontFamily: 'Inter'),
-  bodySmall: TextStyle(fontFamily: 'Inter'),
-  labelLarge: TextStyle(fontFamily: 'Inter'),
-  labelMedium: TextStyle(fontFamily: 'Inter'),
-  labelSmall: TextStyle(fontFamily: 'Inter'),
-);
+const _fontFamily = 'Inter';
 
 class ThemeatorApp extends StatelessWidget {
   const ThemeatorApp({super.key});
@@ -34,11 +18,11 @@ class ThemeatorApp extends StatelessWidget {
       title: 'Flutter Themeator',
       theme: ThemeData(
         colorScheme: colorSchemeProvider.lightColorScheme,
-        textTheme: _interTextTheme,
+        fontFamily: _fontFamily,
       ),
       darkTheme: ThemeData(
         colorScheme: colorSchemeProvider.darkColorScheme,
-        textTheme: _interTextTheme,
+        fontFamily: _fontFamily,
       ),
       themeMode: themeProvider.themeMode,
       home: const HomeScreen(),

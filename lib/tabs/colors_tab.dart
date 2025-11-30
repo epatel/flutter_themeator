@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/color_scheme_provider.dart';
 import '../dialogs/color_editor_dialog.dart';
 
 class ColorsTab extends StatelessWidget {
@@ -12,30 +10,99 @@ class ColorsTab extends StatelessWidget {
     final brightness = Theme.of(context).brightness;
 
     final colorGroups = [
+      _ColorGroup('Surface', [
+        _ColorItem(
+          'surface',
+          colorScheme.surface,
+          'onSurface',
+          colorScheme.onSurface,
+          'Default background for scaffolds',
+        ),
+        _ColorItem(
+          'surfaceDim',
+          colorScheme.surfaceDim,
+          null,
+          null,
+          'Dimmed backgrounds, disabled states',
+        ),
+        _ColorItem(
+          'surfaceBright',
+          colorScheme.surfaceBright,
+          null,
+          null,
+          'Elevated surfaces in dark mode',
+        ),
+        _ColorItem(
+          'surfaceContainerLowest',
+          colorScheme.surfaceContainerLowest,
+          null,
+          null,
+          'Lowest elevation cards',
+        ),
+        _ColorItem(
+          'surfaceContainerLow',
+          colorScheme.surfaceContainerLow,
+          null,
+          null,
+          'Low elevation cards, drawers',
+        ),
+        _ColorItem(
+          'surfaceContainer',
+          colorScheme.surfaceContainer,
+          null,
+          null,
+          'Standard cards, menus',
+        ),
+        _ColorItem(
+          'surfaceContainerHigh',
+          colorScheme.surfaceContainerHigh,
+          null,
+          null,
+          'Dialogs, elevated sheets',
+        ),
+        _ColorItem(
+          'surfaceContainerHighest',
+          colorScheme.surfaceContainerHighest,
+          null,
+          null,
+          'Top-level navigation, app bars',
+        ),
+        _ColorItem(
+          'inverseSurface',
+          colorScheme.inverseSurface,
+          'onInverseSurface',
+          colorScheme.onInverseSurface,
+          'Snackbars, tooltips',
+        ),
+      ]),
       _ColorGroup('Primary', [
         _ColorItem(
           'primary',
           colorScheme.primary,
           'onPrimary',
           colorScheme.onPrimary,
+          'FABs, prominent buttons, active states',
         ),
         _ColorItem(
           'primaryContainer',
           colorScheme.primaryContainer,
           'onPrimaryContainer',
           colorScheme.onPrimaryContainer,
+          'Cards, input fields, tonal buttons',
         ),
         _ColorItem(
           'primaryFixed',
           colorScheme.primaryFixed,
           'onPrimaryFixed',
           colorScheme.onPrimaryFixed,
+          'Headers consistent across themes',
         ),
         _ColorItem(
           'primaryFixedDim',
           colorScheme.primaryFixedDim,
           'onPrimaryFixedVariant',
           colorScheme.onPrimaryFixedVariant,
+          'Subtle fixed backgrounds',
         ),
       ]),
       _ColorGroup('Secondary', [
@@ -44,24 +111,28 @@ class ColorsTab extends StatelessWidget {
           colorScheme.secondary,
           'onSecondary',
           colorScheme.onSecondary,
+          'Filter chips, toggle buttons',
         ),
         _ColorItem(
           'secondaryContainer',
           colorScheme.secondaryContainer,
           'onSecondaryContainer',
           colorScheme.onSecondaryContainer,
+          'Selected items, nav rail selection',
         ),
         _ColorItem(
           'secondaryFixed',
           colorScheme.secondaryFixed,
           'onSecondaryFixed',
           colorScheme.onSecondaryFixed,
+          'Persistent UI elements, sidebars',
         ),
         _ColorItem(
           'secondaryFixedDim',
           colorScheme.secondaryFixedDim,
           'onSecondaryFixedVariant',
           colorScheme.onSecondaryFixedVariant,
+          'Muted fixed backgrounds',
         ),
       ]),
       _ColorGroup('Tertiary', [
@@ -70,94 +141,88 @@ class ColorsTab extends StatelessWidget {
           colorScheme.tertiary,
           'onTertiary',
           colorScheme.onTertiary,
+          'Accent elements, highlights',
         ),
         _ColorItem(
           'tertiaryContainer',
           colorScheme.tertiaryContainer,
           'onTertiaryContainer',
           colorScheme.onTertiaryContainer,
+          'Badges, tags, callout boxes',
         ),
         _ColorItem(
           'tertiaryFixed',
           colorScheme.tertiaryFixed,
           'onTertiaryFixed',
           colorScheme.onTertiaryFixed,
+          'Promotional banners, features',
         ),
         _ColorItem(
           'tertiaryFixedDim',
           colorScheme.tertiaryFixedDim,
           'onTertiaryFixedVariant',
           colorScheme.onTertiaryFixedVariant,
+          'Subtle accents, info panels',
         ),
       ]),
       _ColorGroup('Error', [
-        _ColorItem('error', colorScheme.error, 'onError', colorScheme.onError),
+        _ColorItem(
+          'error',
+          colorScheme.error,
+          'onError',
+          colorScheme.onError,
+          'Critical alerts, destructive buttons',
+        ),
         _ColorItem(
           'errorContainer',
           colorScheme.errorContainer,
           'onErrorContainer',
           colorScheme.onErrorContainer,
-        ),
-      ]),
-      _ColorGroup('Surface', [
-        _ColorItem(
-          'surface',
-          colorScheme.surface,
-          'onSurface',
-          colorScheme.onSurface,
-        ),
-        _ColorItem('surfaceDim', colorScheme.surfaceDim, null, null),
-        _ColorItem('surfaceBright', colorScheme.surfaceBright, null, null),
-        _ColorItem(
-          'surfaceContainerLowest',
-          colorScheme.surfaceContainerLowest,
-          null,
-          null,
-        ),
-        _ColorItem(
-          'surfaceContainerLow',
-          colorScheme.surfaceContainerLow,
-          null,
-          null,
-        ),
-        _ColorItem(
-          'surfaceContainer',
-          colorScheme.surfaceContainer,
-          null,
-          null,
-        ),
-        _ColorItem(
-          'surfaceContainerHigh',
-          colorScheme.surfaceContainerHigh,
-          null,
-          null,
-        ),
-        _ColorItem(
-          'surfaceContainerHighest',
-          colorScheme.surfaceContainerHighest,
-          null,
-          null,
-        ),
-        _ColorItem(
-          'inverseSurface',
-          colorScheme.inverseSurface,
-          'onInverseSurface',
-          colorScheme.onInverseSurface,
+          'Error messages, validation feedback',
         ),
       ]),
       _ColorGroup('Outline & Other', [
-        _ColorItem('outline', colorScheme.outline, null, null),
-        _ColorItem('outlineVariant', colorScheme.outlineVariant, null, null),
-        _ColorItem('shadow', colorScheme.shadow, null, null),
-        _ColorItem('scrim', colorScheme.scrim, null, null),
-        _ColorItem('inversePrimary', colorScheme.inversePrimary, null, null),
-        _ColorItem('surfaceTint', colorScheme.surfaceTint, null, null),
-        _ColorItem('onSurface', colorScheme.onSurface, null, null),
         _ColorItem(
-          'onSurfaceVariant',
-          colorScheme.onSurfaceVariant,
+          'outline',
+          colorScheme.outline,
           null,
           null,
+          'Borders, dividers, input outlines',
+        ),
+        _ColorItem(
+          'outlineVariant',
+          colorScheme.outlineVariant,
+          null,
+          null,
+          'Subtle dividers, decorative borders',
+        ),
+        _ColorItem(
+          'shadow',
+          colorScheme.shadow,
+          null,
+          null,
+          'Drop shadows for elevation',
+        ),
+        _ColorItem(
+          'scrim',
+          colorScheme.scrim,
+          null,
+          null,
+          'Modal overlays, background dimming',
+        ),
+        _ColorItem(
+          'inversePrimary',
+          colorScheme.inversePrimary,
+          null,
+          null,
+          'Links/buttons on inverse surfaces',
+        ),
+        _ColorItem(
+          'surfaceTint',
+          colorScheme.surfaceTint,
+          null,
+          null,
+          'Elevation tint overlay color',
         ),
       ]),
     ];
@@ -193,7 +258,7 @@ class ColorsTab extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 2.0,
+                childAspectRatio: 1.6,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
               ),
@@ -245,8 +310,15 @@ class _ColorItem {
   final Color color;
   final String? onColorName;
   final Color? onColor;
+  final String? useCase;
 
-  _ColorItem(this.name, this.color, this.onColorName, this.onColor);
+  _ColorItem(
+    this.name,
+    this.color,
+    this.onColorName,
+    this.onColor, [
+    this.useCase,
+  ]);
 }
 
 class _ColorCard extends StatelessWidget {
@@ -288,6 +360,19 @@ class _ColorCard extends StatelessWidget {
                 fontSize: 10,
               ),
             ),
+            if (colorItem.useCase != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                colorItem.useCase!,
+                style: TextStyle(
+                  color: fallbackTextColor.withValues(alpha: 0.8),
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
             if (colorItem.onColor != null && colorItem.onColorName != null) ...[
               const SizedBox(height: 4),
               Container(

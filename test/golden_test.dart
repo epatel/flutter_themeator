@@ -26,23 +26,7 @@ Future<void> loadFont(String fontFamily, String path) async {
   await fontLoader.load();
 }
 
-const _interTextTheme = TextTheme(
-  displayLarge: TextStyle(fontFamily: 'Inter'),
-  displayMedium: TextStyle(fontFamily: 'Inter'),
-  displaySmall: TextStyle(fontFamily: 'Inter'),
-  headlineLarge: TextStyle(fontFamily: 'Inter'),
-  headlineMedium: TextStyle(fontFamily: 'Inter'),
-  headlineSmall: TextStyle(fontFamily: 'Inter'),
-  titleLarge: TextStyle(fontFamily: 'Inter'),
-  titleMedium: TextStyle(fontFamily: 'Inter'),
-  titleSmall: TextStyle(fontFamily: 'Inter'),
-  bodyLarge: TextStyle(fontFamily: 'Inter'),
-  bodyMedium: TextStyle(fontFamily: 'Inter'),
-  bodySmall: TextStyle(fontFamily: 'Inter'),
-  labelLarge: TextStyle(fontFamily: 'Inter'),
-  labelMedium: TextStyle(fontFamily: 'Inter'),
-  labelSmall: TextStyle(fontFamily: 'Inter'),
-);
+const _fontFamily = 'Inter';
 
 void main() {
   setUpAll(() async {
@@ -60,7 +44,7 @@ void main() {
           child: MaterialApp(
             theme: ThemeData(
               colorScheme: provider.lightColorScheme,
-              textTheme: _interTextTheme,
+              fontFamily: _fontFamily,
             ),
             home: const Scaffold(
               body: ColorsTab(),
@@ -81,7 +65,7 @@ void main() {
         MaterialApp(
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: const Scaffold(
             body: TextThemesTab(),
@@ -101,7 +85,7 @@ void main() {
         MaterialApp(
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: const Scaffold(
             body: CombinationsTab(),
@@ -121,7 +105,7 @@ void main() {
         MaterialApp(
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: const Scaffold(
             body: WidgetsTab(),
@@ -147,7 +131,7 @@ void main() {
           child: MaterialApp(
             theme: ThemeData(
               colorScheme: provider.darkColorScheme,
-              textTheme: _interTextTheme,
+              fontFamily: _fontFamily,
             ),
             home: const Scaffold(
               body: ColorsTab(),
@@ -171,7 +155,7 @@ void main() {
               seedColor: Colors.deepPurple,
               brightness: Brightness.dark,
             ),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: const Scaffold(
             body: TextThemesTab(),
@@ -193,7 +177,7 @@ void main() {
         MaterialApp(
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: Scaffold(
             body: SingleChildScrollView(
@@ -270,7 +254,7 @@ void main() {
               seedColor: Colors.deepPurple,
               brightness: Brightness.dark,
             ),
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: Scaffold(
             body: SingleChildScrollView(
@@ -348,7 +332,7 @@ void main() {
         MaterialApp(
           theme: ThemeData(
             colorScheme: provider.lightColorScheme,
-            textTheme: _interTextTheme,
+            fontFamily: _fontFamily,
           ),
           home: Scaffold(
             appBar: AppBar(

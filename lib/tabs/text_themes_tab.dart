@@ -50,7 +50,7 @@ class _TextStyleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = item.style;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -67,22 +67,22 @@ class _TextStyleCard extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    color: colorScheme.primaryContainer,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
                     item.name,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      color: colorScheme.onPrimaryContainer,
                     ),
                   ),
                 ),
                 const Spacer(),
-                if (style != null)
+                if (item.style != null)
                   Text(
-                    '${style.fontSize?.toStringAsFixed(0) ?? '?'}px · ${_fontWeightName(style.fontWeight)}',
+                    '${item.style!.fontSize?.toStringAsFixed(0) ?? '?'}px · ${_fontWeightName(item.style!.fontWeight)}',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      color: colorScheme.onSurfaceVariant,
                     ),
                   ),
               ],
@@ -90,7 +90,14 @@ class _TextStyleCard extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               'The quick brown fox jumps over the lazy dog',
-              style: style,
+              style: TextStyle(
+                fontFamily: item.style?.fontFamily,
+                fontSize: item.style?.fontSize,
+                fontWeight: item.style?.fontWeight,
+                letterSpacing: item.style?.letterSpacing,
+                height: item.style?.height,
+                color: colorScheme.onSurface,
+              ),
             ),
           ],
         ),

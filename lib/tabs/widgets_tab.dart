@@ -24,6 +24,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.primary',
+              useCase: 'FABs, prominent buttons, active states',
               child: Surface.primary(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -32,6 +33,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.primaryContainer',
+              useCase: 'Cards, input fields, tonal buttons',
               child: Surface.primaryContainer(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -45,6 +47,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.primaryFixed',
+              useCase: 'Headers that stay consistent across themes',
               child: Surface.primaryFixed(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -53,6 +56,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.primaryFixedDim',
+              useCase: 'Subtle fixed backgrounds, secondary headers',
               child: Surface.primaryFixedDim(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -70,6 +74,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.secondary',
+              useCase: 'Filter chips, toggle buttons, less prominent actions',
               child: Surface.secondary(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -78,6 +83,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.secondaryContainer',
+              useCase: 'Selected items, navigation rail selection',
               child: Surface.secondaryContainer(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -91,6 +97,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.secondaryFixed',
+              useCase: 'Persistent UI elements, sidebars',
               child: Surface.secondaryFixed(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -99,6 +106,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.secondaryFixedDim',
+              useCase: 'Muted fixed backgrounds, footer sections',
               child: Surface.secondaryFixedDim(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -116,6 +124,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.tertiary',
+              useCase: 'Accent elements, complementary highlights',
               child: Surface.tertiary(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -124,6 +133,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.tertiaryContainer',
+              useCase: 'Badges, tags, callout boxes',
               child: Surface.tertiaryContainer(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -137,6 +147,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.tertiaryFixed',
+              useCase: 'Promotional banners, feature highlights',
               child: Surface.tertiaryFixed(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -145,6 +156,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.tertiaryFixedDim',
+              useCase: 'Subtle accents, info panels',
               child: Surface.tertiaryFixedDim(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -162,6 +174,7 @@ class WidgetsTab extends StatelessWidget {
           children: [
             _VariantCard(
               label: 'Surface.error',
+              useCase: 'Critical alerts, destructive action buttons',
               child: Surface.error(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -170,6 +183,7 @@ class WidgetsTab extends StatelessWidget {
             ),
             _VariantCard(
               label: 'Surface.errorContainer',
+              useCase: 'Error messages, validation feedback, warnings',
               child: Surface.errorContainer(
                 padding: const EdgeInsets.all(12),
                 borderRadius: BorderRadius.circular(8),
@@ -246,8 +260,9 @@ class _VariantRow extends StatelessWidget {
 
 class _VariantCard extends StatelessWidget {
   final String label;
+  final String? useCase;
   final Widget child;
-  const _VariantCard({required this.label, required this.child});
+  const _VariantCard({required this.label, this.useCase, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -255,6 +270,16 @@ class _VariantCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: Theme.of(context).textTheme.labelSmall),
+        if (useCase != null) ...[
+          const SizedBox(height: 2),
+          Text(
+            useCase!,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+              fontSize: 11,
+            ),
+          ),
+        ],
         const SizedBox(height: 4),
         child,
       ],

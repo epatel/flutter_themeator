@@ -57,7 +57,7 @@ void main() {
       await tester.tap(find.text('Combos'));
       await tester.pumpAndSettle();
 
-      expect(find.text('Primary'), findsWidgets);
+      expect(find.text('Surface'), findsWidgets);
 
       // Tap on Widgets tab
       await tester.tap(find.text('Widgets'));

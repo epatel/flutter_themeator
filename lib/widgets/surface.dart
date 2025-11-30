@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum SurfaceType { primary, secondary, tertiary, error }
+enum SurfaceType { standard, primary, secondary, tertiary, error }
 
 enum SurfaceMode { standard, container, fixed, fixedDim }
 
@@ -13,12 +13,69 @@ class Surface extends StatelessWidget {
 
   const Surface({
     super.key,
-    required this.type,
+    this.type = SurfaceType.standard,
     this.mode = SurfaceMode.standard,
     required this.child,
     this.padding,
     this.borderRadius,
   });
+
+  // Surface factories
+  factory Surface.standard({
+    Key? key,
+    required Widget child,
+    EdgeInsetsGeometry? padding,
+    BorderRadiusGeometry? borderRadius,
+  }) => Surface(
+    key: key,
+    type: .standard,
+    mode: .standard,
+    padding: padding,
+    borderRadius: borderRadius,
+    child: child,
+  );
+
+  factory Surface.standardContainer({
+    Key? key,
+    required Widget child,
+    EdgeInsetsGeometry? padding,
+    BorderRadiusGeometry? borderRadius,
+  }) => Surface(
+    key: key,
+    type: .standard,
+    mode: .container,
+    padding: padding,
+    borderRadius: borderRadius,
+    child: child,
+  );
+
+  factory Surface.standardFixed({
+    Key? key,
+    required Widget child,
+    EdgeInsetsGeometry? padding,
+    BorderRadiusGeometry? borderRadius,
+  }) => Surface(
+    key: key,
+    type: .standard,
+    mode: .fixed,
+    padding: padding,
+    borderRadius: borderRadius,
+    child: child,
+  );
+
+  factory Surface.standardFixedDim({
+    Key? key,
+    required Widget child,
+    EdgeInsetsGeometry? padding,
+    BorderRadiusGeometry? borderRadius,
+  }) => Surface(
+    key: key,
+    type: .standard,
+    mode: .fixedDim,
+    padding: padding,
+    borderRadius: borderRadius,
+    child: child,
+  );
 
   // Primary factories
   factory Surface.primary({
@@ -222,7 +279,22 @@ class Surface extends StatelessWidget {
 
   (Color background, Color foreground) _resolveColors(ColorScheme colorScheme) {
     return switch ((type, mode)) {
-      // Primary
+      (SurfaceType.standard, SurfaceMode.standard) => (
+        colorScheme.surface,
+        colorScheme.onSurface,
+      ),
+      (SurfaceType.standard, SurfaceMode.container) => (
+        colorScheme.surfaceContainer,
+        colorScheme.onSurface,
+      ),
+      (SurfaceType.standard, SurfaceMode.fixed) => (
+        colorScheme.surface,
+        colorScheme.onSurface,
+      ),
+      (SurfaceType.standard, SurfaceMode.fixedDim) => (
+        colorScheme.surfaceDim,
+        colorScheme.onSurfaceVariant,
+      ),
       (SurfaceType.primary, SurfaceMode.standard) => (
         colorScheme.primary,
         colorScheme.onPrimary,
